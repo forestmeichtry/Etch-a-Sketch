@@ -9,6 +9,11 @@
     <title>Etch-a-Scetch</title>
 </head>
 <body>
+    <div id="alert" style="display: none;">
+        Whoops! Please enter a number between 1 and 100.
+        <span class="close-button" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
+    <button id="button" onclick="sizePrompt()">New Grid</button>
     <div id="main-container"></div>
 </body>
 </html>
