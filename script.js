@@ -1,5 +1,13 @@
 function mouseOver(target, color) {
-    target.style.backgroundColor = color;
+    if (target.style.backgroundColor != '') {
+        colorValues = target.style.backgroundColor.match(/\d+/g);
+        target.style.backgroundColor = 'rgb(' +
+            Math.floor(colorValues[0] * .8) + ', ' +
+            Math.floor(colorValues[1] * .8) + ', ' +
+            Math.floor(colorValues[2] * .8) + ')';
+    } else {
+        target.style.backgroundColor = color;
+    }
 }
 
 // Generates a random color and its opposing color
@@ -17,7 +25,7 @@ function randomColor() {
 
     let opposingColor = 'rgb(' +
         (255 - colorValues[0]) + ', ' +
-        ( 255 - colorValues[1]) + ', ' +
+        (255 - colorValues[1]) + ', ' +
         (255 - colorValues[2]) + ')';
 
     return [color, opposingColor];
