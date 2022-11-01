@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
 }
 
-#button {
+button {
     border: none;
     padding: 15px 32px;
     text-align: center;
@@ -18,7 +18,7 @@ body {
     transition-duration: 0.3s;
 }
 
-#button:hover {
+button:hover {
     background-color: whitesmoke !important;
     border: solid;
 }
@@ -33,6 +33,10 @@ body {
     margin-bottom: 15px;
     opacity: 1;
     transition: opacity 0.6s;
+}
+
+.button-contaier {
+    display: flex;
 }
 
 .close-button {
@@ -62,4 +66,48 @@ body {
 .square {
     outline: 1px solid gray;
     transition: 0.2s;
+}
+
+.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: 8;
+}
+
+.pop-left {
+    animation: pop-left 1s;
+    animation-fill-mode: forwards;
+}
+
+.pop-right {
+    animation: pop-right 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes pop-left {
+    0% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(100px) rotate(200deg) }
+}
+
+@keyframes pop-right {
+    0% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(160px) rotate(-200deg) }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

@@ -13,7 +13,10 @@
         Whoops! Please enter a number between 1 and 100.
         <span class="close-button" onclick="this.parentElement.style.display='none';">&times;</span>
     </div>
-    <button id="button" onclick="sizePrompt()">New Grid</button>
+    <div class="button-container">
+        <button id="button" onclick="sizePrompt()">New Grid</button>
+        <button id="shake-button" onclick="shakeGrid()">Shake It!</button>
+    </div>
     <div id="main-container"></div>
 </body>
 </html>
