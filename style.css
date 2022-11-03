@@ -64,13 +64,12 @@ button:hover {
 }
 
 .square {
-    outline: 1px solid gray;
     transition: 0.2s;
 }
 
 .shake {
     animation: shake 0.5s;
-    animation-iteration-count: 8;
+    animation-iteration-count: 6;
 }
 
 .pop-left {

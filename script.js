@@ -72,9 +72,6 @@ function createGrid(size, fadeIn) {
             mouseOver(e.target, colors[0]);
         });
 
-        if (fadeIn) {
-            newDiv.style.animation = "fade-in 2s"
-        }
         mainContainer.appendChild(newDiv);
     }
 }
@@ -84,39 +81,41 @@ function createGrid(size, fadeIn) {
 function shakeGrid() {
     mainContainer.classList.add("shake");
     let children = mainContainer.children;
-    const refArray = [];
+    const touchedSquares = [];
 
     for (let i = 0; i < children.length; i++) {
-        refArray[i] = i;
+        if (children[i].style.backgroundColor != '') {
+            touchedSquares.push(children[i]);
+        }
     }
     
-    for (let i = refArray.length - 1; i > 0; i--) {
+    for (let i = touchedSquares.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
-        let k = refArray[i];
-        refArray[i] = refArray[j];
-        refArray[j] = k;
+        let k = touchedSquares[i];
+        touchedSquares[i] = touchedSquares[j];
+        touchedSquares[j] = k;
     }
 
-    delayIncrement = 3 / children.length;
+    let delayIncrement = 2 / touchedSquares.length;
     let delay = delayIncrement;
-    for (let i = 0; i < refArray.length; i++) {
+    for (let i = 0; i < touchedSquares.length; i++) {
         if (Math.random() * 2 > 1) {
-            children[refArray[i]].style.animation = "pop-left 1s";
-            children[refArray[i]].style.animationFillMode = "forwards";
+            touchedSquares[i].style.animation = "pop-left 1s";
+            touchedSquares[i].style.animationFillMode = "forwards";
         } else {
-            children[refArray[i]].style.animation = "pop-right 1s";
-            children[refArray[i]].style.animationFillMode = "forwards";
+            touchedSquares[i].style.animation = "pop-right 1s";
+            touchedSquares[i].style.animationFillMode = "forwards";
         }
 
-        children[refArray[i]].style.animationDelay = delay + 's';
+        touchedSquares[i].style.animationDelay = delay + 's';
         delay += delayIncrement;
     }
 
     setTimeout(function () {
-        createGrid(Math.sqrt(children.length), true);
+        createGrid(Math.sqrt(children.length));
         mainContainer.classList.remove("shake");
-    }, 5000);
+    }, 4000);
 }
 
 const mainContainer = document.getElementById('main-container');
-createGrid(60, false);
+createGrid(60);
