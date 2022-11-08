@@ -54,14 +54,6 @@ function createGrid(size, fadeIn) {
 
     // Selects a random rgb color and changes the page elements to match
     const colors = randomColor();
-    const button = document.getElementById('button');
-    button.style.backgroundColor = colors[0];
-    button.style.color = colors[1];
-    const shakeButton = document.getElementById('shake-button');
-    shakeButton.style.backgroundColor = colors[0];
-    shakeButton.style.color = colors[1];
-    mainContainer.style.borderColor = colors[1];
-    
 
     for (let i = 0; i < size * size; i++) {
         let newDiv = document.createElement('div');
@@ -79,6 +71,8 @@ function createGrid(size, fadeIn) {
 // Applies a shaking animation to the main grid and a falling animation to each square
 // A new grid with the same dimensions is created after the animation completes
 function shakeGrid() {
+    const shakeButton = document.getElementById('shake-button');
+    shakeButton.setAttribute('disabled', '');
     mainContainer.classList.add("shake");
     let children = mainContainer.children;
     const touchedSquares = [];
@@ -114,7 +108,8 @@ function shakeGrid() {
     setTimeout(function () {
         createGrid(Math.sqrt(children.length));
         mainContainer.classList.remove("shake");
-    }, 4000);
+        shakeButton.removeAttribute('disabled');
+    }, 2500);
 }
 
 const mainContainer = document.getElementById('main-container');

@@ -15,6 +15,7 @@ button {
     font-weight: bold;
     border-radius: 4px;
     color: black;
+    background-color: bisque;
     transition-duration: 0.3s;
 }
 
@@ -58,7 +59,7 @@ button:hover {
     flex-wrap: wrap;
     width: 800px;
     height: 800px;
-    border-style: groove;
+    border-style: solid;
     border-color: black;
     border-width: 8px;
 }
