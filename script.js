@@ -40,7 +40,7 @@ function sizePrompt() {
     if (size != null) {
         // If the input is not valid an alert message is displayed
         if (isNaN(size) || size < 1 || size > 100) {
-            alertBox.style.display = 'flex';
+            alertBox.style.visibility = 'visible';
         } else {
             createGrid(size);
         }
